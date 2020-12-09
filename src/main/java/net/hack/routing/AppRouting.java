@@ -7,7 +7,10 @@ import static spark.Spark.*;
 
 public class AppRouting {
 
+    private final HackApi hackApi = new HackApi();
+
+
     public AppRouting(){
-        get("/add/routine", new HackApi().createRoutine());
+        get("/", hackApi.createRoutine());
     }
 }
