@@ -1,7 +1,16 @@
 console.log("Program running.....");
-let classNamesArray = [];
+let classNamesArray = ["Downward Facing Dog",
+    "Mountain Pose",
+    "High Lunge",
+    "Low Lunge Pose",
+    "Warrior II"];
+
+let index = 0;
+
 const runBtn = document.querySelector('.run');
-let timer;
+let predictionCount;
+let classNames = "";
+
 
 // More API functions here:
 // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/pose
@@ -18,6 +27,7 @@ async function init() {
     // Refer to tmImage.loadFromFiles() in the API to support files from a file picker
     // Note: the pose library adds a tmPose object to your window (window.tmPose)
     model = await tmPose.load(modelURL, metadataURL);
+
     maxPredictions = model.getTotalClasses();
 
     // Convenience function to setup a webcam
@@ -37,13 +47,18 @@ async function init() {
         labelContainer.appendChild(document.createElement("div"));
     }
 
+
+
 }
 
 async function loop(timestamp) {
     webcam.update(); // update the webcam frame
     await predict();
     window.requestAnimationFrame(loop);
+
 }
+
+
 
 async function predict() {
     // Prediction #1: run input through posenet
@@ -51,24 +66,31 @@ async function predict() {
     const { pose, posenetOutput } = await model.estimatePose(webcam.canvas);
     // Prediction 2: run input through teachable machine classification model
     const prediction = await model.predict(posenetOutput);
-    let className = "";
 
     for (let i = 0; i < maxPredictions; i++) {
         const classPrediction =
             prediction[i].className + ": " + prediction[i].probability.toFixed(2);
         // console.log(prediction[i].className);
-        className = prediction[i].className
+        classNames = prediction[i].className
         labelContainer.childNodes[i].innerHTML = classPrediction;
-        setTimeout(() => {
-            // console.log("pushing to array");
+        predictionCount = prediction[i].probability.toFixed(2)
 
-            // classNamesArray.push(prediction[i].probability.toFixed(2))
-        }, 1000)
+
+        // if (classNames === classNamesArray[index]) {
+        //     console.log("in check");
+        //     index++;
+        //     getPredictionCount(prediction[i].probability.toFixed(2))
+        //     getClassName(prediction[i].className);
+        //     webcam.stop()
+        //     //init();
+        //     // console.log(prediction[i].probability.toFixed(2) + " Pose: " + prediction[i].className);
+        // }
+        poseHandler(prediction[i].className, prediction[i].probability.toFixed(2));
+
     }
 
     // finally draw the poses
     drawPose(pose);
-
 }
 
 function drawPose(pose) {
@@ -84,14 +106,72 @@ function drawPose(pose) {
 }
 
 
+// const throt_func = _.throttle(async () => {
+//     console.log("throttle running");
+//     // clearTimeout(loop_func_call, 5000)
+// }, 5000)
 
-const throt_func = _.throttle(() => {
-    console.log("running throttle");
-}, 1000)
 
-const loop_func_call = ()=>{
-    setTimeout(loop_func_call, 20);
-    throt_func();
+// const loop_func_call = () => {
+//     setTimeout(loop_func_call, 5);
+//     throt_func();
+// }
+// loop_func_call()
+
+const getPredictionCount = (predictionCount) => {
+    let count;
+
+    classNamesArray.push(predictionCount * 100);
+    classNamesArray.forEach(element => {
+        count = + element
+    });
+
+    console.log(classNamesArray);
+
+
+    let predictedData = {
+        "name": classNames,
+        "avarage": count
+    }
+
+    console.log(predictedData.avarage + " avarage");
+
+
 }
 
-loop_func_call();
+const getClassName = (className) => {
+    return className;
+}
+
+// const sendBtn = document.querySelector('.sendBtn');
+// const input = document.querySelector('.input')
+
+// sendBtn.addEventListener('click', async () => {
+//     console.log("button clicked");
+
+//     let params = {
+//         "name": input.value,
+//     }
+
+//     await axios.post('/api/sendUser/', params)
+// })
+
+
+const poseHandler = (className, avarage) => {
+    console.log(avarage);
+
+    if (className == "Mountain Pose" && avarage == 1.00) {
+        // console.log(className);
+        webcam.stop();
+    }
+    if (className == "Downward Facing Dog") {
+        console.log(className);
+        webcam.stop();
+    }
+    if (className === "Low Lunge Pose") {
+        // webcam.stop();
+        // console.log(className);
+
+    }
+}
+
