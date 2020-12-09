@@ -3,8 +3,10 @@ package net.hack.controller;
 import com.google.gson.Gson;
 import net.hack.mappers.GetAxiosData;
 import net.hack.model.Player;
+import net.hack.model.PlayerPoseScore;
 import net.hack.model.Pose;
 import net.hack.model.Routine;
+import net.hack.services.PlayerPoseScoreService;
 import net.hack.services.PlayerService;
 import net.hack.services.PoseService;
 import net.hack.services.RoutineService;
@@ -48,12 +50,17 @@ public class PlayerController {
 
         post("/api/sendUser/", (request, response) -> {
             GetAxiosData data = new Gson().fromJson(request.body(), GetAxiosData.class);
-            System.out.printf(data.getName());
-
-//            PoseService.getInstance().insertPose(new Pose(2, data.getName()));
+            System.out.printf(data.getName() + " " + data.getAverage());
+//            PoseService.getInstance().insertPose(new Pose(3, data.getName()));
+            PlayerPoseScoreService.getInstance().insertPlayerPoseScore(
+                    new PlayerPoseScore(1,
+                            1,
+                            PoseService.getInstance()
+                                    .selectPose(data
+                                            .getName()).getId(), Integer.parseInt(data.getAverage())));
 
             response.redirect("/");
-            return null;
+            return "success";
         });
     }
 }
