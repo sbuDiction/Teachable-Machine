@@ -11,7 +11,7 @@ public class PlayerService {
     private static final PlayerService instance = new PlayerService();
     private final PlayerDoa playerDoa = new PlayerDoaImpl();
 
-    public PlayerService getInstance(){
+    public static PlayerService getInstance(){
         return instance;
     }
 
