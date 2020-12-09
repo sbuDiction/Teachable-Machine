@@ -68,6 +68,20 @@
             <p class="service-desc">It va esser tam simplic quam Occidental A un gleso va semblar simplificat.</p>
           </div>
     </div>
+
+    <div>Teachable Machine Pose Model</div>
+    <button type="button" onclick="init()">Start</button>
+    <div><canvas id="canvas"></canvas></div>
+    <div id="label-container"></div>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js"></script>
+
+    <!-- <form action="/api/sendUser/" method="POST"> -->
+      <input class="input" type="text" >
+      <button  class="sendBtn">send</button>
+    <!-- </form> -->
+
+  </div>
 </body>
 <script src="./javaScript/teachable_machine.js"></script>
 
