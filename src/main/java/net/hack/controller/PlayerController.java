@@ -1,5 +1,7 @@
 package net.hack.controller;
 
+import com.google.gson.Gson;
+import net.hack.mappers.GetAxiosData;
 import net.hack.model.Player;
 import net.hack.model.Pose;
 import net.hack.model.Routine;
@@ -13,14 +15,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static  spark.Spark.*;
+import static spark.Spark.*;
 
 public class PlayerController {
     public static String render(Map<String, Object> model, String templatePath) {
         return new HandlebarsTemplateEngine().render(new ModelAndView(model, templatePath));
     }
 
-    public PlayerController(PlayerService playerService, RoutineService routineService){
+    public PlayerController(PlayerService playerService, RoutineService routineService) {
         get("/player/:id", ((request, response) -> {
             Map<String, Object> model = new HashMap<>();
 
@@ -44,7 +46,15 @@ public class PlayerController {
             return render(model, "createRoutineForm.hbs");
         }));
 
+        post("/api/sendUser/", (request, response) -> {
+            GetAxiosData data = new Gson().fromJson(request.body(), GetAxiosData.class);
+            System.out.printf(data.getName());
 
+//            PoseService.getInstance().insertPose(new Pose(2, data.getName()));
+
+            response.redirect("/");
+            return null;
+        });
     }
 }
 

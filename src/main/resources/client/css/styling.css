@@ -6,10 +6,10 @@
 	background-size: cover;
 	background-position: center center;
 	width: 100%;
-	height: auto;
+	height: 900px;
 	color:#fff;
 	position: relative;
-}
+} 
 .yoga .banner .banner-overlay {
 	position: absolute;
 	top: 0;

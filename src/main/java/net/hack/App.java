@@ -26,6 +26,8 @@ public class App {
         PoseService.getInstance().insertPose(new Pose(4, "seated"));*/
         new PlayerController(PlayerService.getInstance(), RoutineService.getInstance());
 
-   /*     PlayerService.getInstance().insertPlayer(new Player(1,"Thaabit", "Jacobs", "jacobs@gmail.com"));*/
+//       PlayerService.getInstance().insertPlayer(new Player(1,"Thaabit", "Jacobs", "jacobs@gmail.com"));
+//       RoutineService.getInstance().insertRoutine(new Routine(1,"sbu",new ArrayList<>()));
     }
+
 }
