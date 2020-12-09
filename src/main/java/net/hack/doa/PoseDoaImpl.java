@@ -46,6 +46,11 @@ public class PoseDoaImpl implements PoseDoa{
     }
 
     @Override
+    public Pose selectPose(String name) {
+        return jdbi.withExtension(PoseDoa.class, doa -> doa.selectPose(name));
+    }
+
+    @Override
     public boolean deletePose(int id) {
         return jdbi.withExtension(PoseDoa.class, doa -> doa.deletePose(id));
     }

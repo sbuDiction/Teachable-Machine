@@ -23,6 +23,10 @@ public class PoseService {
         return poseDoa.selectPose(id);
     }
 
+    public Pose selectPose(String name){
+        return poseDoa.selectPose(name);
+    }
+
     public List<Pose> selectAllPoses(){
         return poseDoa.selectAllPoses();
     }

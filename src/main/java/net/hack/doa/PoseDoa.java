@@ -17,6 +17,9 @@ public interface PoseDoa {
     @SqlQuery("select * from poses where id=?")
     Pose selectPose(int id);
 
+    @SqlQuery("select * from poses where name=?")
+    Pose selectPose(String name);
+
     @SqlUpdate("delete from poses where id=?")
     boolean deletePose(int id);
 }
