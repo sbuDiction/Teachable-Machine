@@ -11,7 +11,7 @@ public class PoseService {
     private static final PoseService instance = new PoseService();
     private final PoseDoa poseDoa = new PoseDoaImpl();
 
-    public PoseService getInstance(){
+    public static PoseService getInstance(){
         return instance;
     }
 
@@ -21,6 +21,10 @@ public class PoseService {
 
     public Pose selectPose(int id){
         return poseDoa.selectPose(id);
+    }
+
+    public Pose selectPose(String name){
+        return poseDoa.selectPose(name);
     }
 
     public List<Pose> selectAllPoses(){

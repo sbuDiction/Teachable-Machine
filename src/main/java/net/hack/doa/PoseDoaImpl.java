@@ -10,7 +10,7 @@ import org.jdbi.v3.sqlobject.SqlObjectPlugin;
 import java.util.List;
 
 public class PoseDoaImpl implements PoseDoa{
-    private Jdbi jdbi = Jdbi.create("jdbc:postgresql://localhost:5432/hack", "thaabit", "1234");
+    private Jdbi jdbi = Jdbi.create("jdbc:postgresql://localhost:5432/hack", "codex", "codex123");
 
     public PoseDoaImpl() {
 /*        try {
@@ -43,6 +43,11 @@ public class PoseDoaImpl implements PoseDoa{
     @Override
     public Pose selectPose(int id) {
         return jdbi.withExtension(PoseDoa.class, doa -> doa.selectPose(id));
+    }
+
+    @Override
+    public Pose selectPose(String name) {
+        return jdbi.withExtension(PoseDoa.class, doa -> doa.selectPose(name));
     }
 
     @Override
