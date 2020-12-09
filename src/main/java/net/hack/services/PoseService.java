@@ -11,7 +11,7 @@ public class PoseService {
     private static final PoseService instance = new PoseService();
     private final PoseDoa poseDoa = new PoseDoaImpl();
 
-    public PoseService getInstance(){
+    public static PoseService getInstance(){
         return instance;
     }
 
