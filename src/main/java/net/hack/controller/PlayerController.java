@@ -26,13 +26,13 @@ public class PlayerController {
         get("/player/:id", ((request, response) -> {
             Map<String, Object> model = new HashMap<>();
 
-            int playerId = Integer.parseInt(request.params("id"));
+/*            int playerId = Integer.parseInt(request.params("id"));
             List<Routine> routineList = RoutineService.getInstance().selectAllRoutines();
             Player player = PlayerService.getInstance().selectPlayer(playerId);
 
             model.put("routineList", routineList);
             model.put("playerName", player.getFirstName() + " " + player.getLastName());
-            model.put("playerId", player.getId());
+            model.put("playerId", player.getId());*/
             return render(model, "index.hbs");
         }));
 
@@ -40,8 +40,10 @@ public class PlayerController {
             Map<String, Object> model = new HashMap<>();
 
             int playerId = Integer.parseInt(request.params("id"));
+            List<Pose> poseList = PoseService.getInstance().selectAllPoses();
 
-            return render(model, "addRoutineForm.hbs");
+            model.put("poseLIst", poseList);
+            return render(model, "createRoutineForm.hbs");
         }));
 
         post("/api/sendUser/", (request, response) -> {
