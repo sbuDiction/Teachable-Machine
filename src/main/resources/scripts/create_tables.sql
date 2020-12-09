@@ -1,4 +1,4 @@
-create table if not exists players(
+    create table if not exists players(
     id int primary key not null,
     first_name varchar(255),
     last_name varchar(255),
