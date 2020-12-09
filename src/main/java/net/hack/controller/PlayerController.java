@@ -1,8 +1,10 @@
 package net.hack.controller;
 
 import net.hack.model.Player;
+import net.hack.model.Pose;
 import net.hack.model.Routine;
 import net.hack.services.PlayerService;
+import net.hack.services.PoseService;
 import net.hack.services.RoutineService;
 import spark.ModelAndView;
 import spark.template.handlebars.HandlebarsTemplateEngine;
@@ -36,9 +38,13 @@ public class PlayerController {
             Map<String, Object> model = new HashMap<>();
 
             int playerId = Integer.parseInt(request.params("id"));
+            List<Pose> poseList = PoseService.getInstance().selectAllPoses();
 
-            return render(model, "addRoutineForm.hbs");
+            model.put("poseLIst", poseList);
+            return render(model, "createRoutineForm.hbs");
         }));
+
+
     }
 }
 
