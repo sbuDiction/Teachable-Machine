@@ -38,7 +38,7 @@
 **How do players progress**
 * Players can use there previous stats from the same routine as references and do better
 
-***How do players End**
+**How do players End**
 * Players must go through the entire routines or click end to stop
 
 * * *
