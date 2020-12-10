@@ -1,13 +1,6 @@
 console.log("Program running.....");
-let classNamesArray = ["Downward Facing Dog",
-    "Mountain Pose",
-    "High Lunge",
-    "Low Lunge Pose",
-    "Warrior II"];
-
 let index = 0;
 let avarageContainer = [];
-
 const runBtn = document.querySelector('.run');
 let predictionCount;
 let className = "";
@@ -56,7 +49,6 @@ async function loop(timestamp) {
     webcam.update(); // update the webcam frame
     await predict();
     window.requestAnimationFrame(loop);
-
 }
 
 
@@ -79,7 +71,6 @@ async function predict() {
         average = prediction[i].probability.toFixed(2)
         setTimeout(async () => {
             if (prediction[i].className === "Downward Facing Dog") {
-                // console.log(prediction[i].className);
                 webcam.stop();
                 await axios.post("/api/sendUser/", {
                     "name": prediction[i].className,

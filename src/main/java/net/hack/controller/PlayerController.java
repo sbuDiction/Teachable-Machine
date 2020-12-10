@@ -13,6 +13,7 @@ import net.hack.services.RoutineService;
 import spark.ModelAndView;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -61,6 +62,17 @@ public class PlayerController {
 
             response.redirect("/");
             return "success";
+        });
+
+        get("/stats", (request, response) -> {
+            Map<String, Object> map = new HashMap<>();
+
+            List<PlayerPoseScore> playerPoseScoreList = PlayerPoseScoreService.getInstance().selectAllPlayerPoseScores();
+            List<Integer> scoreList = new ArrayList<>();
+
+            playerPoseScoreList.forEach(a -> scoreList.add(a.getScore()));
+            map.put("data", scoreList);
+            return render(map, "stats.hbs");
         });
     }
 }
