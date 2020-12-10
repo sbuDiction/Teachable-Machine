@@ -6,10 +6,11 @@ let classNamesArray = ["Downward Facing Dog",
     "Warrior II"];
 
 let index = 0;
+let avarageContainer = [];
 
 const runBtn = document.querySelector('.run');
 let predictionCount;
-let classNames = "";
+let className = "";
 
 
 // More API functions here:
@@ -66,28 +67,32 @@ async function predict() {
     const { pose, posenetOutput } = await model.estimatePose(webcam.canvas);
     // Prediction 2: run input through teachable machine classification model
     const prediction = await model.predict(posenetOutput);
-
+    let class_ = ""
+    let average = 0;
     for (let i = 0; i < maxPredictions; i++) {
         const classPrediction =
             prediction[i].className + ": " + prediction[i].probability.toFixed(2);
-        // console.log(prediction[i].className);
         classNames = prediction[i].className
         labelContainer.childNodes[i].innerHTML = classPrediction;
-        predictionCount = prediction[i].probability.toFixed(2)
 
+        class_ = prediction[i].className;
+        average = prediction[i].probability.toFixed(2)
+        setTimeout(async () => {
+            if (prediction[i].className === "Downward Facing Dog") {
+                // console.log(prediction[i].className);
+                webcam.stop();
+                await axios.post("/api/sendUser/", {
+                    "name": prediction[i].className,
+                    "average": prediction[i].probability.toFixed(2) * 100
+                }).then(response => response.data)
 
-        // if (classNames === classNamesArray[index]) {
-        //     console.log("in check");
-        //     index++;
-        //     getPredictionCount(prediction[i].probability.toFixed(2))
-        //     getClassName(prediction[i].className);
-        //     webcam.stop()
-        //     //init();
-        //     // console.log(prediction[i].probability.toFixed(2) + " Pose: " + prediction[i].className);
-        // }
-        poseHandler(prediction[i].className, prediction[i].probability.toFixed(2));
+            }
+        }, 10000)
+
 
     }
+
+    // poseHandler(class_, average);
 
     // finally draw the poses
     drawPose(pose);
@@ -157,21 +162,28 @@ const getClassName = (className) => {
 // })
 
 
-const poseHandler = (className, avarage) => {
+const poseHandler = async (className, avarage) => {
     console.log(avarage);
 
-    if (className == "Mountain Pose" && avarage == 1.00) {
-        // console.log(className);
-        webcam.stop();
-    }
+
+
+
     if (className == "Downward Facing Dog") {
         console.log(className);
+        // avarageContainer.push(avarage);
         webcam.stop();
+        await axios.post("/api/sendUser/", {
+            "name": className,
+            "average": avarage
+        }).then(response => {
+            console.log(response);
+        }).catch(error => {
+            console.log(error);
+        })
+        // sendObject();
     }
-    if (className === "Low Lunge Pose") {
-        // webcam.stop();
-        // console.log(className);
 
-    }
+    // console.log(avarageContainer);
+
+
 }
-
