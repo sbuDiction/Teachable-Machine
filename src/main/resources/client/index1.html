@@ -1,15 +1,16 @@
-<!doctype html>
+<!-- <!doctype html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="./css/styling.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="http://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.css" rel="stylesheet" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.js"></script>
@@ -18,128 +19,109 @@
 
 
 </head>
+
 <body>
+    
+   
+    <div class="container">
+        <div class="barner">
+        <div class="inside-container top-bar">
+            <div class="bg-img">
+                <div class="container">
+                  <div class="topnav">
+                    <a href="#home">Home</a>
+                    <a href="#poses">News</a>
+                    <a href="#contact">Contact</a>
+                    <a href="#about">About</a>
+                  </div>
+                </div>
+              </div>  
+        </div>
+        <h1 class="mb-4 mt-4">Click Satrt to begin pose</h1>
+        <div class="row mb-5">
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-5">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">Navbar</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Features</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Pricing</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-                </li>
-            </ul>
+            <div class="col-8">
+                <h1>Warrior</h1>
+                <h3>Teachable Machine Pose Model</h3>
+                <div><canvas id="canvas1"></canvas>
+                {{canvas1}}</div>
+                <div id="label-container1"></div>
+                <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+                <script
+                    src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js"></script>
+            </div>
+
+            <div class="col-4">
+                <P>Warrior 2 is an external hip opener and opens up the inner thighs and groin. It's a good starting
+                    point for many side postures including triangle, extended angle and half moon balance.
+                    How to do it: Stand with your feet one leg’s-length apart.
+                </P>
+                <button type="button" class="btn btn-dark mt-4 mb-4" onclick="init()">Start</button>
+            </div>
+        </div>
+
+        <div class="row mb-5">
+            <div class="col-8">
+                <h1>Downward-Dog</h1>
+                <h3>Teachable Machine Pose Model</h3>
+                <div><canvas id="canvas2"></canvas>
+                    {{canvas2}}</div>
+                <div id="label-container2"></div>
+                <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+                <script
+                    src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js"></script>
+            </div>
+            <div class="col">
+                <p>Downward Dog is used in most yoga practices and yoga classes and it stretches and strengthens the
+                    entire body. I always say, “a down dog a day keeps the doctor away.”</p>
+                <button type="button" class="btn btn-dark mt-4 mb-4" onclick="init()">Start</button>
+            </div>
+        </div>
+
+        <div class="row mb-5">
+
+            <div class="col-8">
+                <h1>Low lunge</h1>
+                <h3>Teachable Machine Pose Model</h3>
+                <div><canvas id="canvas3"></canvas>
+                    {{canvas3}}</div>
+                <div id="label-container3"></div>
+                <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+                <script
+                    src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js"></script>
+            </div>
+            <div class="col">
+                <p>Low Lunge, or Anjaneyasana in Sanskrit, stretches the thighs and groins and opens the chest. It
+                    provides recovery post-workout, and boosts energy while consciously working to improve posture.</p>
+                <button type="button" class="btn btn-dark mt-4 mb-4" onclick="init()">Start</button>
+            </div>
+        </div>
+
+        <div class="row mb-5">
+            <div class="col-8">
+                <h2>Mountain Pose</h2>
+                <div>Teachable Machine Pose Model</div>
+                <div><canvas id="canvas4"></canvas>
+                {{canvas4}}</div>
+                <div id="label-container"></div>
+                <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+                <script
+                    src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js"></script>
+            </div>
+            <div class="col">
+                <p>Mountain Pose is the base for all standing poses; it gives you a sense of how to ground in to your
+                    feet and feel the earth below you. Mountain pose may seem like "simply standing," but there is a ton
+                    going on..</p>
+                <button type="button" class="btn btn-dark mt-4 mb-4" onclick="init()">Start</button>
+            </div>
         </div>
     </div>
-</nav>
-
-<div class="container">
-    <h1 class="mb-4 mt-4">Click Satrt to begin pose</h1>
-    <div class="row mb-5">
-
-        <div class="col-8">
-            <h2>Warrior</h2>
-            <div>Teachable Machine Pose Model</div>
-            <button type="button" onclick="init()">Start</button>
-            <div><canvas id="canvas1"></canvas></div>
-            <div id="label-container1"></div>
-            <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js"></script>
-        </div>
-
-        <div class="col-4">
-            <P>Warrior 2 is an external hip opener and opens up the inner thighs and groin. It's a good starting point for many side postures including triangle, extended angle and half moon balance.
-
-                How to do it: Stand with your feet one leg’s-length apart.
-
-            </P>
-
-            <button type="button" class="btn btn-dark mt-4 mb-4" onclick="init()">Start</button>
-
-        </div>
-
     </div>
-
-    <div class="row mb-5">
-
-        <div class="col-8">
-            <h2>Downward-Dog</h2>
-            <div>Teachable Machine Pose Model</div>
-            <button type="button" onclick="init()">Start</button>
-            <div><canvas id="canvas2"></canvas></div>
-            <div id="label-container2"></div>
-            <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js"></script>
-
-
-        </div>
-
-        <div class="col">
-            <p>Downward Dog is used in most yoga practices and yoga classes and it stretches and strengthens the entire body. I always say, “a down dog a day keeps the doctor away.”</p>
-
-            <button type="button" class="btn btn-dark mt-4 mb-4" onclick="init()">Start</button>
-        </div>
-
-    </div>
-
-    <div class="row mb-5">
-
-        <div class="col-8">
-            <h2>Low lunge</h2>
-            <div>Teachable Machine Pose Model</div>
-            <button type="button" onclick="init()">Start</button>
-            <div><canvas id="canvas3"></canvas></div>
-            <div id="label-container3"></div>
-            <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js"></script>
-
-        </div>
-
-        <div class="col">
-            <p>Low Lunge, or Anjaneyasana in Sanskrit, stretches the thighs and groins and opens the chest. It provides recovery post-workout, and boosts energy while consciously working to improve posture.</p>
-
-            <button type="button" class="btn btn-dark mt-4 mb-4" onclick="init()">Start</button>
-        </div>
-
-    </div>
-
-    <div class="row mb-5">
-
-        <div class="col-8">
-            <h2>Mountain Pose</h2>
-            <div>Teachable Machine Pose Model</div>
-            <button type="button" onclick="init()">Start</button>
-            <div><canvas id="canvas4"></canvas></div>
-            <div id="label-container"></div>
-            <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js"></script>
-
-
-        </div>
-
-        <div class="col">
-            <p>Mountain Pose is the base for all standing poses; it gives you a sense of how to ground in to your feet and feel the earth below you. Mountain pose may seem like "simply standing," but there is a ton going on..</p>
-
-            <button type="button" class="btn btn-dark mt-4 mb-4" onclick="init()">Start</button>
-        </div>
-
-    </div>
-</div>
+    
 
 
 
-<script src=".javaScript/teachable_machine.js"></script>
+    <script src=".javaScript/teachable_machine.js"></script>
 </body>
-</html>
+
+</html> -->
