@@ -1,5 +1,4 @@
 
-
 .yoga .banner {
 	background-image: url(../images/yoga-header.jpg);
 	background-repeat: no-repeat; 
@@ -9,6 +8,7 @@
 	height: 900px;
 	color:#fff;
 	position: relative;
+<<<<<<< HEAD
 } 
 .routines .banner2 {
 	background-image: url(../images/yoga-header.jpg);
@@ -28,6 +28,8 @@
     max-width: 1920px;
     background-color: rgba(0,0,0,.5);
     z-index: 2;
+=======
+>>>>>>> e2483949db35e101bb6d431608bf5d739ace7457
 }
 .yoga .banner .top-bar{
 	padding:26px 15px; 
@@ -100,7 +102,7 @@
 	margin-bottom: 51px;
 	width: 97%;
 }
-.yoga .banner .banner-content a.banner-btn {
+.yoga .banner .banner-content a.banner-btn .routine-btn{
 	font-family: 'Josefin Sans', sans-serif;
 	font-size: 20px;
 	line-height: 25px;
@@ -145,3 +147,14 @@
     background-color: #ddd;
     color: white;
   }
+/*routine*/
+  .routine .routine1 {
+	background-image: url(../images/yoga-header.jpg);
+	background-repeat: no-repeat; 
+	background-size: cover;
+	background-position: center center;
+	width: 100%;
+	height: auto;
+	color:#fff;
+	position: relative;
+}
