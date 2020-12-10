@@ -8,6 +8,28 @@
 	height: 900px;
 	color:#fff;
 	position: relative;
+<<<<<<< HEAD
+} 
+.routines .banner2 {
+	background-image: url(../images/yoga-header.jpg);
+	background-repeat: no-repeat; 
+	background-size: cover;
+	background-position: center center;
+	width: 100%;
+	height: 900px;
+	color:#fff;
+	position: relative;
+} 
+.yoga .banner .banner-overlay {
+	position: absolute;
+	top: 0;
+    width: 100%;
+    height: 100%; 
+    max-width: 1920px;
+    background-color: rgba(0,0,0,.5);
+    z-index: 2;
+=======
+>>>>>>> e2483949db35e101bb6d431608bf5d739ace7457
 }
 .yoga .banner .top-bar{
 	padding:26px 15px; 
