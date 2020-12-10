@@ -29,13 +29,13 @@
 * People who can't afford to pay for a personal trainer.
 * People with little time.
 
-*** What is the learning loop**
+** What is the learning loop**
 * Select a routine that you want to do and perfom it then you will get feedback ,if the feedback is not good enough you can re-do and select another pose that is not harder.
 
-***How do players Start**
+**How do players Start**
 * Select poses to practise/do and this builds a routine then click start on routines
 
-***How do players progress**
+**How do players progress**
 * Players can use there previous stats from the same routine as references and do better
 
 ***How do players End**
