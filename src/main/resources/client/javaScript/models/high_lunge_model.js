@@ -1,6 +1,7 @@
 // More API functions here:
 // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/pose
 
+// the link to your model1 provided by Teachable Machine export panel
 const URL1 = "https://teachablemachine.withgoogle.com/models/NAH-13YdA/";
 let model1, webcam1, ctx1, labelContainer1, maxPredictions1;
 
@@ -22,6 +23,14 @@ async function high_lunge() {
     await webcam1.setup(); // request access to the webcam1
     await webcam1.play();
     window.requestAnimationFrame(loop);
+
+    // append/get elements to the DOM
+    const canvas = document.getElementById("canvas2");
+    canvas.width = size; canvas.height = size;
+    ctx1 = canvas.getContext("2d");
+    labelContainer1 = document.getElementById("label-container");
+    for (let i = 0; i < maxPredictions1; i++) { // and class labels
+    }
 }
 
 async function loop(timestamp) {
@@ -30,15 +39,17 @@ async function loop(timestamp) {
     window.requestAnimationFrame(loop);
 }
 
-predict = async () => {
+
+
+async function predict() {
     // Prediction #1: run input through posenet
     // estimatePose can take in an image, video or canvas html element
     const { pose, posenetOutput } = await model1.estimatePose(webcam1.canvas);
     // Prediction 2: run input through teachable machine classification model1
     const prediction = await model1.predict(posenetOutput);
-    let class_ = ""
-    let average = 0;
     for (let i = 0; i < maxPredictions1; i++) {
+        console.log(prediction[i].className);
+
         setTimeout(async () => {
             if (prediction[i].className === "High Lunge") {
                 webcam1.stop();
@@ -46,7 +57,6 @@ predict = async () => {
                     "name": prediction[i].className,
                     "average": prediction[i].probability.toFixed(2) * 100
                 }).then(response => response.data)
-
             }
         }, 10000)
     }
@@ -64,3 +74,21 @@ function drawPose(pose) {
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

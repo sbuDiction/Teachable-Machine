@@ -1,3 +1,4 @@
+const lowBtn = document.querySelector('.low');
 // More API functions here:
 // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/pose
 
@@ -25,16 +26,12 @@ async function low_lunge() {
     window.requestAnimationFrame(loop);
 
     // append/get elements to the DOM
-    const canvas = document.getElementById("canvas");
+    const canvas = document.getElementById("canvas1");
     canvas.width = size; canvas.height = size;
     ctx2 = canvas.getContext("2d");
     labelContainer2 = document.getElementById("label-container");
     for (let i = 0; i < maxPredictions2; i++) { // and class labels
-        // labelContainer2.appendChild(document.createElement("div"));
     }
-
-
-
 }
 
 async function loop(timestamp) {
@@ -51,30 +48,19 @@ async function predict() {
     const { pose, posenetOutput } = await model2.estimatePose(webcam2.canvas);
     // Prediction 2: run input through teachable machine classification model2
     const prediction = await model2.predict(posenetOutput);
-    let class_ = ""
-    let average = 0;
     for (let i = 0; i < maxPredictions2; i++) {
-        
+        console.log(prediction[i].className);
 
-        class_ = prediction[i].className;
-        average = prediction[i].probability.toFixed(2)
         setTimeout(async () => {
-            if (prediction[i].className === "Downward Facing Dog") {
+            if (prediction[i].className === "Low Lunge Pose") {
                 webcam2.stop();
                 await axios.post("/api/sendUser/", {
                     "name": prediction[i].className,
                     "average": prediction[i].probability.toFixed(2) * 100
                 }).then(response => response.data)
-
             }
         }, 10000)
-
-
     }
-
-    // poseHandler(class_, average);
-
-    // finally draw the poses
     drawPose(pose);
 }
 
@@ -90,80 +76,7 @@ function drawPose(pose) {
     }
 }
 
-
-// const throt_func = _.throttle(async () => {
-//     console.log("throttle running");
-//     // clearTimeout(loop_func_call, 5000)
-// }, 5000)
-
-
-// const loop_func_call = () => {
-//     setTimeout(loop_func_call, 5);
-//     throt_func();
-// }
-// loop_func_call()
-
-const getPredictionCount = (predictionCount) => {
-    let count;
-
-    classNamesArray.push(predictionCount * 100);
-    classNamesArray.forEach(element => {
-        count = + element
-    });
-
-    console.log(classNamesArray);
-
-
-    let predictedData = {
-        "name": classNames,
-        "avarage": count
-    }
-
-    console.log(predictedData.avarage + " avarage");
-
-
-}
-
-const getClassName = (className) => {
-    return className;
-}
-
-// const sendBtn = document.querySelector('.sendBtn');
-// const input = document.querySelector('.input')
-
-// sendBtn.addEventListener('click', async () => {
-//     console.log("button clicked");
-
-//     let params = {
-//         "name": input.value,
-//     }
-
-//     await axios.post('/api/sendUser/', params)
-// })
-
-
-const poseHandler = async (className, avarage) => {
-    console.log(avarage);
-
-
-
-
-    if (className == "Downward Facing Dog") {
-        console.log(className);
-        // avarageContainer.push(avarage);
-        webcam2.stop();
-        await axios.post("/api/sendUser/", {
-            "name": className,
-            "average": avarage
-        }).then(response => {
-            console.log(response);
-        }).catch(error => {
-            console.log(error);
-        })
-        // sendObject();
-    }
-
-    // console.log(avarageContainer);
-
-
-}
+lowBtn.addEventListener('click', () => {
+    console.log("low btn clicked");
+    low_lunge();
+})
