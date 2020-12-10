@@ -8,7 +8,6 @@
 	height: 900px;
 	color:#fff;
 	position: relative;
-<<<<<<< HEAD
 } 
 .routines .banner2 {
 	background-image: url(../images/yoga-header.jpg);
@@ -28,8 +27,6 @@
     max-width: 1920px;
     background-color: rgba(0,0,0,.5);
     z-index: 2;
-=======
->>>>>>> e2483949db35e101bb6d431608bf5d739ace7457
 }
 .yoga .banner .top-bar{
 	padding:26px 15px; 
@@ -67,6 +64,16 @@
 .yoga .banner .top-bar-right a:hover{
 	color:#fe86d4;
 	text-decoration: none;
+}
+
+.info{
+	width: 100px;
+	height: 50px;
+	margin-right: 30em;
+	font-weight: bolder;
+	border-radius: 25%;
+	color: white;
+	background-color: rgb(41, 18, 41);
 }
 .yoga .banner .top-bar-left i,
 .top-bar-right i {
