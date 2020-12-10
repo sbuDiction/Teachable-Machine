@@ -11,7 +11,7 @@ import java.util.List;
 
 public class RoutineDoaImpl implements RoutineDoa{
 
-    private Jdbi jdbi = Jdbi.create("jdbc:postgresql://localhost:5432/hack", "thaabit", "1234");
+    private Jdbi jdbi = Jdbi.create("jdbc:postgresql://localhost:5432/hack", "codex", "codex123");
 
     public RoutineDoaImpl() {
 /*        try {
