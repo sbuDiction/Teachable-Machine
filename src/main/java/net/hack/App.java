@@ -28,6 +28,12 @@ public class App {
 
 //       PlayerService.getInstance().insertPlayer(new Player(1,"Thaabit", "Jacobs", "jacobs@gmail.com"));
 //       RoutineService.getInstance().insertRoutine(new Routine(1,"sbu",new ArrayList<>()));
+//        PoseService.getInstance().insertPose(new Pose(1, "Downward Facing Dog"));
+//        PoseService.getInstance().insertPose(new Pose(2, "Mountain Pose"));
+//        PoseService.getInstance().insertPose(new Pose(3, "High Lunge"));
+//        PoseService.getInstance().insertPose(new Pose(4, "Low Lunge Pose"));
+//        PoseService.getInstance().insertPose(new Pose(5, "Warrior II"));
+//        PoseService.getInstance().insertPose(new Pose(6, "Warrior I"));
     }
 
 }

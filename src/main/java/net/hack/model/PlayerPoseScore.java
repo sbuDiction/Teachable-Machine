@@ -40,6 +40,14 @@ public class PlayerPoseScore {
         return playerId;
     }
 
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
     public PlayerPoseScore setPlayerId(int player_id) {
         this.playerId = player_id;
 
