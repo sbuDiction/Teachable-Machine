@@ -95,11 +95,10 @@
             <scope>test</scope>
         </dependency>
 
-        <dependency>
-            <groupId>org.jdbi</groupId>
-            <artifactId>jdbi3-core</artifactId>
-            <version>3.1.0</version>
-        </dependency>
+            <dependency>
+                <groupId>org.jdbi</groupId>
+                <artifactId>jdbi3-core</artifactId>
+            </dependency>
 
         <dependency>
             <groupId>org.json</groupId>
@@ -107,10 +106,10 @@
             <version>20180813</version>
         </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>org.jdbi</groupId>-->
-<!--            <artifactId>jdbi3-core</artifactId>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.jdbi</groupId>-->
+        <!--            <artifactId>jdbi3-core</artifactId>-->
+        <!--        </dependency>-->
 
         <dependency>
             <groupId>org.jdbi</groupId>
