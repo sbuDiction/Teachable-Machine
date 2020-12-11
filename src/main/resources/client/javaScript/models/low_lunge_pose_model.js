@@ -19,7 +19,7 @@ async function low_lunge() {
     maxPredictions2 = model2.getTotalClasses();
 
     // Convenience function to setup a webcam2
-    const size = 200;
+    const size = 500;
     const flip = true; // whether to flip the webcam2
     webcam2 = new tmPose.Webcam(size, size, flip); // width, height, flip
     await webcam2.setup(); // request access to the webcam2
