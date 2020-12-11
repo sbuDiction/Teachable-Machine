@@ -1,40 +1,42 @@
-// More API functions here:
-// https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/pose
+const musicPlayer = document.getElementById("gameAudio");
 
-// the link to your model1 provided by Teachable Machine export panel
-const URL1 = "https://teachablemachine.withgoogle.com/models/NAH-13YdA/";
-let model1, webcam1, ctx1, labelContainer1, maxPredictions1;
+const URL = "https://teachablemachine.withgoogle.com/models/NAH-13YdA/";
+let model, webcam, ctx, labelContainer, maxPredictions;
 
-async function high_lunge() {
-    const modelURL = URL1 + "model.json";
-    const metadataURL = URL1 + "metadata.json";
+async function init() {
+    const modelURL = URL + "model.json";
+    const metadataURL = URL + "metadata.json";
 
-    // load the model1 and metadata
+    // load the model and metadata
     // Refer to tmImage.loadFromFiles() in the API to support files from a file picker
     // Note: the pose library adds a tmPose object to your window (window.tmPose)
-    model1 = await tmPose.load(modelURL, metadataURL);
+    model = await tmPose.load(modelURL, metadataURL);
 
-    maxPredictions1 = model1.getTotalClasses();
+    maxPredictions = model.getTotalClasses();
 
-    // Convenience function to setup a webcam1
-    const size = 200;
-    const flip = true; // whether to flip the webcam1
-    webcam1 = new tmPose.Webcam(size, size, flip); // width, height, flip
-    await webcam1.setup(); // request access to the webcam1
-    await webcam1.play();
+    // Convenience function to setup a webcam
+    const size = 500;
+    const flip = true; // whether to flip the webcam
+    webcam = new tmPose.Webcam(size, size, flip); // width, height, flip
+    await webcam.setup(); // request access to the webcam
+    await webcam.play();
     window.requestAnimationFrame(loop);
 
     // append/get elements to the DOM
     const canvas = document.getElementById("canvas2");
     canvas.width = size; canvas.height = size;
-    ctx1 = canvas.getContext("2d");
-    labelContainer1 = document.getElementById("label-container");
-    for (let i = 0; i < maxPredictions1; i++) { // and class labels
+    ctx = canvas.getContext("2d");
+    labelContainer = document.getElementById("label-container");
+    for (let i = 0; i < maxPredictions; i++) { // and class labels
+        // labelContainer.appendChild(document.createElement("div"));
     }
+
+
+
 }
 
 async function loop(timestamp) {
-    webcam1.update(); // update the webcam1 frame
+    webcam.update(); // update the webcam frame
     await predict();
     window.requestAnimationFrame(loop);
 }
@@ -44,51 +46,71 @@ async function loop(timestamp) {
 async function predict() {
     // Prediction #1: run input through posenet
     // estimatePose can take in an image, video or canvas html element
-    const { pose, posenetOutput } = await model1.estimatePose(webcam1.canvas);
-    // Prediction 2: run input through teachable machine classification model1
-    const prediction = await model1.predict(posenetOutput);
-    for (let i = 0; i < maxPredictions1; i++) {
-        console.log(prediction[i].className);
+    const { pose, posenetOutput } = await model.estimatePose(webcam.canvas);
+    // Prediction 2: run input through teachable machine classification model
+    const prediction = await model.predict(posenetOutput);
+    let class_ = ""
+    let average = 0;
+    for (let i = 0; i < maxPredictions; i++) {
+    
 
+        class_ = prediction[i].className;
+        average = prediction[i].probability.toFixed(2)
         setTimeout(async () => {
             if (prediction[i].className === "High Lunge") {
-                webcam1.stop();
+                musicPlayer.play();
+                // musicPlayer.pause();
+                webcam.stop();
+                const next = document.querySelector('.next');
+                next.classList.remove('hidden')
                 await axios.post("/api/sendUser/", {
                     "name": prediction[i].className,
                     "average": prediction[i].probability.toFixed(2) * 100
                 }).then(response => response.data)
             }
         }, 10000)
+
+
     }
+
+    // poseHandler(class_, average);
+
+    // finally draw the poses
     drawPose(pose);
 }
 
 function drawPose(pose) {
-    if (webcam1.canvas) {
-        ctx1.drawImage(webcam1.canvas, 0, 0);
+    if (webcam.canvas) {
+        ctx.drawImage(webcam.canvas, 0, 0);
         // draw the keypoints and skeleton
         if (pose) {
             const minPartConfidence = 0.5;
-            tmPose.drawKeypoints(pose.keypoints, minPartConfidence, ctx1);
-            tmPose.drawSkeleton(pose.keypoints, minPartConfidence, ctx1);
+            tmPose.drawKeypoints(pose.keypoints, minPartConfidence, ctx);
+            tmPose.drawSkeleton(pose.keypoints, minPartConfidence, ctx);
         }
     }
 }
 
 
+let href = location.href;
+console.log(href + " href");
+console.log(href === href);
 
+setTimeout(() => {
+    if (href === href) {
+        init();
+        nextSlide();
 
+    }
+}, 5000)
 
+const nextSlide = () => {
+    $('.fetch')
+        .transition({
+            animation: 'scale',
+            duration: '2s',
+            onComplete: () => {
 
-
-
-
-
-
-
-
-
-
-
-
-
+            }
+        })
+}

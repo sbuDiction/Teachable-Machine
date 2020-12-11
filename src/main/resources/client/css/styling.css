@@ -165,3 +165,14 @@
 	color:#fff;
 	position: relative;
 }
+.cannvas{
+	width: 500px;
+	height: 500px;
+	border:solid blueviolet;
+	border-radius: 10%;
+
+}
+
+.hidden{
+	display: none	;
+}

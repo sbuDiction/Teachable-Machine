@@ -81,11 +81,18 @@
             <scope>test</scope>
         </dependency>
 
+<<<<<<< HEAD
         <dependency>
             <groupId>org.jdbi</groupId>
             <artifactId>jdbi3-core</artifactId>
             <version>3.17.0</version>
         </dependency>
+=======
+            <dependency>
+                <groupId>org.jdbi</groupId>
+                <artifactId>jdbi3-core</artifactId>
+            </dependency>
+>>>>>>> 66846caa592aca6bab14758033ae7fcf00b4f136
 
         <dependency>
             <groupId>org.json</groupId>
@@ -93,6 +100,13 @@
             <version>20180813</version>
         </dependency>
 
+<<<<<<< HEAD
+=======
+        <!--        <dependency>-->
+        <!--            <groupId>org.jdbi</groupId>-->
+        <!--            <artifactId>jdbi3-core</artifactId>-->
+        <!--        </dependency>-->
+>>>>>>> 66846caa592aca6bab14758033ae7fcf00b4f136
 
         <dependency>
             <groupId>org.jdbi</groupId>

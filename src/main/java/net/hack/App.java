@@ -1,15 +1,16 @@
 package net.hack;
 
-import net.hack.controller.PlayerController;
+//import net.hack.controller.PlayerController;
 import net.hack.model.Player;
 import net.hack.model.PlayerPoseScore;
 import net.hack.model.Pose;
 import net.hack.model.Routine;
+//import net.hack.routing.AppRouting;
 import net.hack.routing.AppRouting;
 import net.hack.services.PlayerPoseScoreService;
 import net.hack.services.PlayerService;
 import net.hack.services.PoseService;
-import net.hack.services.RoutineService;
+//import net.hack.services.RoutineService;
 
 import java.util.ArrayList;
 
@@ -30,12 +31,12 @@ public class App {
     public static void main(String[] args) {
         port(getHerokuAssignedPort());
         staticFiles.location("/client");
-        /*new AppRouting();*/
+        new AppRouting();
 /*
         PoseService.getInstance().insertPose(new Pose(2, "lion"));
         PoseService.getInstance().insertPose(new Pose(3, "standing"));
         PoseService.getInstance().insertPose(new Pose(4, "seated"));*/
-        new PlayerController(PlayerService.getInstance(), RoutineService.getInstance());
+//        new PlayerController(PlayerService.getInstance(), RoutineService.getInstance());
 
 
 
