@@ -66,6 +66,9 @@ async function predict() {
                 webcam.stop();
                 const next = document.querySelector('.next');
                 next.classList.remove('hidden')
+                // setTimeout(function () {
+                //     $('#dimm').hide();
+                // }, 1000)
                 await axios.post("/api/sendUser/", {
                     "name": prediction[i].className,
                     "average": prediction[i].probability.toFixed(2) * 100
@@ -116,4 +119,11 @@ const nextSlide = () => {
 
             }
         })
+}
+
+const dimmer = document.querySelector('.dimmer');
+dimmer.classList.remove("active");
+
+const startLoader = () => {
+    dimmer.classList.add("active");
 }
