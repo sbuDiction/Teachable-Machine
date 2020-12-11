@@ -125,8 +125,5 @@ const dimmer = document.querySelector('.dimmer');
 dimmer.classList.remove("active");
 
 const startLoader = () => {
-    setTimeout(() => {
-        alert("redirecting")
-    },5000)
     dimmer.classList.add("active");
 }
