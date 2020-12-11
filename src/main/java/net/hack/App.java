@@ -21,7 +21,7 @@ public class App {
 
     public static void main(String[] args) {
 
-        staticFiles.location("/client/routines/");
+        staticFiles.location("/client");
         new AppRouting();
 /*
         PoseService.getInstance().insertPose(new Pose(2, "lion"));
