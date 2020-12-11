@@ -15,7 +15,7 @@ async function init() {
     maxPredictions = model.getTotalClasses();
 
     // Convenience function to setup a webcam
-    const size = 200;
+    const size = 500;
     const flip = true; // whether to flip the webcam
     webcam = new tmPose.Webcam(size, size, flip); // width, height, flip
     await webcam.setup(); // request access to the webcam
@@ -66,6 +66,9 @@ async function predict() {
                 webcam.stop();
                 const next = document.querySelector('.next');
                 next.classList.remove('hidden')
+                // setTimeout(function () {
+                //     $('#dimm').hide();
+                // }, 1000)
                 await axios.post("/api/sendUser/", {
                     "name": prediction[i].className,
                     "average": prediction[i].probability.toFixed(2) * 100
@@ -116,4 +119,14 @@ const nextSlide = () => {
 
             }
         })
+}
+
+const dimmer = document.querySelector('.dimmer');
+dimmer.classList.remove("active");
+
+const startLoader = () => {
+    setTimeout(() => {
+        alert("redirecting")
+    },5000)
+    dimmer.classList.add("active");
 }

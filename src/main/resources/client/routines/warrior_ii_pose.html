@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,20 +16,27 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
+<script>
+    setTimeout(() => {
+        startLoader();
+        setTimeout("window.location.replace('../stats/stats.html')", 5000);
+    }, 24000)
+</script>
+
 <body>
     <div class="container">
         <div class="inside-container top-bar">
             <div class="bg-img">
                 <div class="container">
                   <div class="topnav">
-                    <a href="index.html">Home</a>
+                    <a href="../index.html">Home</a>
                     <a href="#levels">Levels</a>
                     <a href="index1.html">Routines</a>
                     <a href="templates/contact.html">Contact</a>
                     <a href="#about">About</a>
                   </div>
                 </div>
-              </div>  
+            </div>
         </div>
 
 
@@ -54,10 +62,10 @@
         <div class="row mb-5">
             <h1>Warrior II</h1>
             <div class="col-8">
-                <div class="ui card">
+                <div style="height: 600px;width: 400px;" class="ui card">
                     <div class="image">
                         <!-- <img src="/images/avatar2/large/kristy.png"> -->
-                        <canvas id="canvas2"></canvas>
+                        <canvas style="height: 600px;width: 400px;" id="canvas2"></canvas>
                     </div>
                     <div class="content">
                         <!-- <a class="header">Mountain Pose</a> -->
@@ -97,9 +105,9 @@
                 <div class="ui positive message hidden next">
                     <i class="close icon"></i>
                     <div class="header">
-                        You did well now going to next pose
+                        Finished!!
                     </div>
-                    <p><b>Get ready!!</b></p>
+                    <p><b>Welldone!! you have completed all the routines</b></p>
                 </div>
                 <!-- <p>Low Lunge, or Anjaneyasana in Sanskrit, stretches the thighs and groins and opens the chest. It
                     provides recovery post-workout, and boosts energy while consciously working to improve posture.
@@ -107,7 +115,11 @@
                 <button type="button" class="btn btn-dark mt-4 mb-4 low">Start</button> -->
             </div>
         </div>
-
+        <div id="dimm" class="ui active dimmer ">
+            <!-- <div class="ui big text loader">Greate!! please wait while we calculate your results for the routines</div> -->
+            <h4 style="color: rgb(202, 250, 125);" class="ui big text loader">Greate!! please wait while we compile all
+                your results for the routines</h4>
+        </div>
     </div>
 </body>
 <audio id="gameAudio">
