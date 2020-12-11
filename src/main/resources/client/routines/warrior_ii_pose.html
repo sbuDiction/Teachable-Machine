@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../css/styling.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="inside-container top-bar">
+            <div class="bg-img">
+                <div class="container">
+                  <div class="topnav">
+                    <a href="index.html">Home</a>
+                    <a href="#levels">Levels</a>
+                    <a href="index1.html">Routines</a>
+                    <a href="templates/contact.html">Contact</a>
+                    <a href="#about">About</a>
+                  </div>
+                </div>
+              </div>  
+        </div>
+
+
+        <!-- <div class="row mb-5">
+            <div class="col-8">
+                <h2>Warrior II</h2>
+                <div><canvas id="canvas4"></canvas></div>
+                <div id="label-container"></div>
+                <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+                <script
+                    src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js"></script>
+            </div>
+            <div class="col">
+                <P>Warrior 2 is an external hip opener and opens up the inner thighs and groin. It's a good starting
+                    point for many side postures including triangle, extended angle and half moon balance.
+                    How to do it: Stand with your feet one leg’s-length apart.
+                </P>
+
+                <button type="button" class="btn btn-dark mt-4 mb-4 warrior">Start</button>
+            </div>
+        </div> -->
+
+        <div class="row mb-5">
+            <h1>Warrior II</h1>
+            <div class="col-8">
+                <div class="ui card">
+                    <div class="image">
+                        <!-- <img src="/images/avatar2/large/kristy.png"> -->
+                        <canvas id="canvas2"></canvas>
+                    </div>
+                    <div class="content">
+                        <!-- <a class="header">Mountain Pose</a> -->
+                        <div class="meta">
+                            <!-- <span class="date">Joined in 2013</span> -->
+                        </div>
+                        <div class="description">
+                            <!-- Kristy is an art director living in New York. -->
+                        </div>
+                    </div>
+                    <div class="extra content">
+                        <a>
+                            <!-- <i class="user icon"></i> -->
+                            <!-- 22 Friends -->
+                        </a>
+                    </div>
+                </div>
+                <div></div>
+                <div class="" id="label-container"></div>
+
+                <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+                <script
+                    src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js"></script>
+            </div>
+
+            <div class="col-4">
+                <div class="ui icon message fetch">
+                    <i style="color: green;" class="notched  circle loading icon"></i>
+                    <div class="content">
+                        <div class="header">
+                            Just 5 seconds
+                        </div>
+                        <p>We're fetching that camera for you.</p>
+                    </div>
+                </div>
+
+                <div class="ui positive message hidden next">
+                    <i class="close icon"></i>
+                    <div class="header">
+                        You did well now going to next pose
+                    </div>
+                    <p><b>Get ready!!</b></p>
+                </div>
+                <!-- <p>Low Lunge, or Anjaneyasana in Sanskrit, stretches the thighs and groins and opens the chest. It
+                    provides recovery post-workout, and boosts energy while consciously working to improve posture.
+                </p>
+                <button type="button" class="btn btn-dark mt-4 mb-4 low">Start</button> -->
+            </div>
+        </div>
+
+    </div>
+</body>
+<audio id="gameAudio">
+    <source src="../sounds/mixkit-arcade-game-complete-or-approved-mission-205.wav" type="audio/mpeg">
+</audio>
+<script src="../javaScript/models/warrior_i_pose_model.js"></script>
+
+</html>

@@ -1,4 +1,5 @@
 const lowBtn = document.querySelector('.low');
+const musicPlayer = document.getElementById("gameAudio");
 // More API functions here:
 // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/pose
 
@@ -49,15 +50,23 @@ async function predict() {
     // Prediction 2: run input through teachable machine classification model2
     const prediction = await model2.predict(posenetOutput);
     for (let i = 0; i < maxPredictions2; i++) {
-        console.log(prediction[i].className);
+        // console.log(prediction[i].className === "Low Lunge Pose");
+        // console.log(prediction[i].className);
+        
 
         setTimeout(async () => {
             if (prediction[i].className === "Low Lunge Pose") {
+                musicPlayer.play();
+                // musicPlayer.pause();
                 webcam2.stop();
+                const next = document.querySelector('.next');
+                next.classList.remove('hidden')
                 await axios.post("/api/sendUser/", {
                     "name": prediction[i].className,
                     "average": prediction[i].probability.toFixed(2) * 100
                 }).then(response => response.data)
+
+
             }
         }, 10000)
     }
@@ -76,7 +85,25 @@ function drawPose(pose) {
     }
 }
 
-lowBtn.addEventListener('click', () => {
-    console.log("low btn clicked");
-    low_lunge();
-})
+let href = location.href;
+console.log(href + " href");
+console.log(href === href);
+
+setTimeout(() => {
+    if (href === href) {
+        low_lunge();
+        nextSlide();
+
+    }
+}, 5000)
+
+const nextSlide = () => {
+    $('.fetch')
+        .transition({
+            animation: 'scale',
+            duration: '2s',
+            onComplete: () => {
+
+            }
+        })
+}
