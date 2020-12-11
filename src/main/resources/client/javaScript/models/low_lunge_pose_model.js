@@ -65,8 +65,6 @@ async function predict() {
                     "name": prediction[i].className,
                     "average": prediction[i].probability.toFixed(2) * 100
                 }).then(response => response.data)
-
-
             }
         }, 10000)
     }
